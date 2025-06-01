@@ -11,6 +11,7 @@ import static org.openqa.selenium.By.linkText;
 
 public class AllureReportLessonExampleSteps {
     private final static String repository = "eroshenkoam/allure-example";
+    private final static int issue = 80;
 
     @Test
     public void testIssueSearch() {
@@ -28,8 +29,8 @@ public class AllureReportLessonExampleSteps {
         step("Открываем Issue", () -> {
             $("#issues-tab").click();
         });
-        step("Проверяем в Issue наличие ссылки", () -> {
-            $(withText("#80")).should(Condition.exist);
+        step("Проверяем наличие Issue с номером" + issue, () -> {
+            $(withText(String.valueOf(issue))).should(Condition.exist);
         });
 
     }
