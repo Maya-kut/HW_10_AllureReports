@@ -18,18 +18,18 @@ public class AllureReportLessonExampleSteps {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открываем главную страницу", () -> open("https://github.com"));
-        step("Ищем репозиторий" + repository, () -> {
+        step("Ищем репозиторий " + repository, () -> {
             $(".search-input").click();
             $("#query-builder-test").setValue(repository).pressEnter();
         });
 
-        step("Кликаем по ссылке репозитория" + repository, () -> {
+        step("Кликаем по ссылке репозитория " + repository, () -> {
             $(linkText("eroshenkoam/allure-example")).click();
         });
         step("Открываем Issue", () -> {
             $("#issues-tab").click();
         });
-        step("Проверяем наличие Issue с номером" + issue, () -> {
+        step("Проверяем наличие Issue с номером " + issue, () -> {
             $(withText(String.valueOf(issue))).should(Condition.exist);
         });
 
