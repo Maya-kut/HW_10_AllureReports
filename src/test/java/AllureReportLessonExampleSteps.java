@@ -10,20 +10,27 @@ import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
 public class AllureReportLessonExampleSteps {
-    private final static String repository="eroshenkoam/allure-example";
+    private final static String repository = "eroshenkoam/allure-example";
+
     @Test
     public void testIssueSearch() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        step("Открываем главную страницу",()->{
-        open("https://github.com");
+        step("Открываем главную страницу", () -> open("https://github.com"));
+        step("Ищем репозиторий" + repository, () -> {
+            $(".search-input").click();
+            $("#query-builder-test").setValue(repository).pressEnter();
         });
-        step("Ищем репозиторий"+ repository);
-        $(".search-input").click();
-        $("#query-builder-test").setValue(repository).pressEnter();
 
-        $(linkText("eroshenkoam/allure-example")).click();
-        $("#issues-tab").click();
-        $(withText("#80")).should(Condition.exist);
+        step("Кликаем по ссылке репозитория" + repository, () -> {
+            $(linkText("eroshenkoam/allure-example")).click();
+        });
+        step("Открываем Issue", () -> {
+            $("#issues-tab").click();
+        });
+        step("Проверяем в Issue наличие ссылки", () -> {
+            $(withText("#80")).should(Condition.exist);
+        });
+
     }
 }
