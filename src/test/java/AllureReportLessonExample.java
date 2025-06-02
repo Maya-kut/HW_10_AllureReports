@@ -16,7 +16,7 @@ public class AllureReportLessonExample {
         open("https://github.com");
 
         $(".search-input").click();
-        $("#query-builder-test").setValue("eroshenkoam/allure-example").pressEnter();
+        $("#query-builder-test").setValue("java").pressEnter();
 
         $(linkText("eroshenkoam/allure-example")).click();
         $("#issues-tab").click();
