@@ -11,7 +11,7 @@ import static org.openqa.selenium.By.linkText;
 
 public class AllureReportLessonLambda {
     private final static String repository = "java";
-    private final static int issue = 30;
+    private final static int issue = 3994;
 
     @Test
     public void testIssueSearch() {

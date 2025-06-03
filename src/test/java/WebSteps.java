@@ -7,13 +7,14 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.By.linkText;
 
 public class WebSteps {
-
+    private final static String repository = "java";
+    private final static int issue = 30;
     @Step("Открываем главную страницу")
     public void openMainPage() {
         open("https://github.com");
     }
 
-    @Step("Ищем репозиторий {reposytory}")
+    @Step("Ищем репозиторий {repository}")
     public void searchRepository(String repository) {
         {
             $(".search-input").click();
@@ -21,7 +22,7 @@ public class WebSteps {
         }
     }
 
-    @Step("Кликаем по ссылке репозитория {reposytory")
+    @Step("Кликаем по ссылке репозитория {repository")
     public void clickOnRepositoryLink(String repository) {
         $(linkText(repository)).click();
     }
